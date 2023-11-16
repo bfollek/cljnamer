@@ -1,19 +1,40 @@
 (ns cljnamer.main
   (:require ["package:flutter/material.dart" :as m]
+            ["package:english_words/english_words.dart" :as ew]
             [cljd.flutter :as f]))
+
+(def widgie
+  (f/widget
+   (m/Text "Don't stop it now!")))
+
+(def my-home-page
+  (f/widget
+   (m/Scaffold
+    .body
+    (m/Column
+     .children [(m/Text "A random idea:")
+                (m/Text "This should come from the state.")]))))
+
+;; class MyHomePage extends StatelessWidget {
+;;   @override
+;;   Widget build(BuildContext context) {
+;;     var appState = context.watch<MyAppState>();
+
+;;     return Scaffold(
+;;       body: Column(
+;;         children: [
+;;           Text('A random idea:'),
+;;           Text(appState.current.asLowerCase),
+;;         ],
+;;       ),
+;;     );
+;;   }
+;; }
+
 
 (defn main []
   (f/run
    (m/MaterialApp
-    .title "Welcome to Flutter"
-    .theme (m/ThemeData .primarySwatch m.Colors/pink))
-   .home
-   (m/Scaffold
-    .appBar (m/AppBar
-             .title (m/Text "Welcome to ClojureDart")))
-   .body
-   m/Center
-   (m/Text "cljnamer says hi!"
-           .style (m/TextStyle
-                   .color m.Colors/red
-                   .fontSize 32.0))))
+    .title "ClojureDot Namer App"
+    ;.theme theme
+    .home my-home-page)))
