@@ -1,1 +1,1 @@
-export "cljd-out/acme/main.dart" show main;
+export "cljd-out/cljnamer/main.dart" show main;
