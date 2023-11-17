@@ -3,10 +3,6 @@
             ["package:english_words/english_words.dart" :as ew]
             [cljd.flutter :as f]))
 
-(def widgie
-  (f/widget
-   (m/Text "Don't stop it now!")))
-
 (def my-home-page
   (f/widget
    (m/Scaffold
@@ -14,23 +10,6 @@
     (m/Column
      .children [(m/Text "A random idea:")
                 (m/Text "This should come from the state.")]))))
-
-;; class MyHomePage extends StatelessWidget {
-;;   @override
-;;   Widget build(BuildContext context) {
-;;     var appState = context.watch<MyAppState>();
-
-;;     return Scaffold(
-;;       body: Column(
-;;         children: [
-;;           Text('A random idea:'),
-;;           Text(appState.current.asLowerCase),
-;;         ],
-;;       ),
-;;     );
-;;   }
-;; }
-
 
 (defn main []
   (f/run
