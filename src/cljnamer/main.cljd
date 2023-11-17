@@ -7,11 +7,14 @@
 
 (def my-home-page
   (f/widget
+   :let [pair (:current @app-state)
+         first-word (.-first pair)
+         second-word (.-second pair)]
    (m/Scaffold
     .body
     (m/Column
      .children [(m/Text "A random idea:")
-                (m/Text (.-first (:current @app-state)))]))))
+                (m/Text (str first-word second-word))]))))
 
 (defn main []
   (f/run
