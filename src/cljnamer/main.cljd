@@ -17,7 +17,8 @@
                 (m/Text (str first-word second-word))
                 (m/ElevatedButton
                  .onPressed
-                 (print "button pressed")
+                 ;#(print "button pressed")
+                 #(swap! app-state assoc :current (.random ew/WordPair))
                  .child
                  (m/Text "Next"))]))))
                 ;; ElevatedButton(
