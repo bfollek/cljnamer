@@ -17,19 +17,11 @@
      .children [(m/Text "A pseudorandom idea:")
                 (m/Text (str first-word second-word))
                 (m/ElevatedButton
-                 ;:watch [state app-state]
-                 ;(m/Text (str v))
                  .onPressed
-                 ;#(print "button pressed")
                  #(swap! app-state assoc :current (.random ew/WordPair))
                  .child
                  (m/Text "Next"))]))))
-                ;; ElevatedButton(
-                ;;             onPressed: () {
-                ;;               print('button pressed!');
-                ;;             },
-                ;;             child: Text('Next'),
-                ;;           ),
+
 (defn main []
   (f/run
    (m/MaterialApp
