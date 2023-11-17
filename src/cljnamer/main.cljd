@@ -10,8 +10,8 @@
   (f/widget
    :watch [st app-state]
    :let [pair (:current st)
-         first-word (string/lower-case (.-first pair))
-         second-word (string/lower-case (.-second pair))]
+         first-word (string/lower-case (.-first ^ew/WordPair pair))
+         second-word (string/lower-case (.-second ^ew/WordPair pair))]
    (m/Scaffold
     .body
     (m/Column
