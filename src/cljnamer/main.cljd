@@ -13,9 +13,19 @@
    (m/Scaffold
     .body
     (m/Column
-     .children [(m/Text "A random idea:")
-                (m/Text (str first-word second-word))]))))
-
+     .children [(m/Text "A pseudorandom idea:")
+                (m/Text (str first-word second-word))
+                (m/ElevatedButton
+                 .onPressed
+                 (print "button pressed")
+                 .child
+                 (m/Text "Next"))]))))
+                ;; ElevatedButton(
+                ;;             onPressed: () {
+                ;;               print('button pressed!');
+                ;;             },
+                ;;             child: Text('Next'),
+                ;;           ),
 (defn main []
   (f/run
    (m/MaterialApp
