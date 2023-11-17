@@ -7,7 +7,8 @@
 
 (def my-home-page
   (f/widget
-   :let [pair (:current @app-state)
+   :watch [st app-state]
+   :let [pair (:current st)
          first-word (.-first pair)
          second-word (.-second pair)]
    (m/Scaffold
@@ -16,6 +17,8 @@
      .children [(m/Text "A pseudorandom idea:")
                 (m/Text (str first-word second-word))
                 (m/ElevatedButton
+                 ;:watch [state app-state]
+                 ;(m/Text (str v))
                  .onPressed
                  ;#(print "button pressed")
                  #(swap! app-state assoc :current (.random ew/WordPair))
