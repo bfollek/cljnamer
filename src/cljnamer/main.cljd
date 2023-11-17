@@ -1,7 +1,6 @@
 (ns cljnamer.main
   (:require ["package:flutter/material.dart" :as m]
             ["package:english_words/english_words.dart" :as ew]
-            ["dart:core" :as dc]
             [cljd.flutter :as f]))
 
 (defonce app-state (atom {:current (.random ew/WordPair)}))
@@ -19,9 +18,7 @@
                 (m/Text (str first-word second-word))
                 (m/ElevatedButton
                  .onPressed
-                 #(do
-                    (swap! app-state assoc :current (.random ew/WordPair))
-                    (dc/print "hi from dc"))
+                 #(swap! app-state assoc :current (.random ew/WordPair))
                  .child
                  (m/Text "Next"))]))))
 
