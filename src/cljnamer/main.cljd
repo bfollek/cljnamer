@@ -3,13 +3,15 @@
             ["package:english_words/english_words.dart" :as ew]
             [cljd.flutter :as f]))
 
+(defonce app-state (atom {:current (.random ew/WordPair)}))
+
 (def my-home-page
   (f/widget
    (m/Scaffold
     .body
     (m/Column
      .children [(m/Text "A random idea:")
-                (m/Text "This should come from the state.")]))))
+                (m/Text (.-first (:current @app-state)))]))))
 
 (defn main []
   (f/run
