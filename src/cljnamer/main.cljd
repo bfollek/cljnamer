@@ -28,4 +28,8 @@
    (m/MaterialApp
     .title "ClojureDot Namer App"
     ;.theme theme
+    ;; theme: ThemeData(
+    ;;           useMaterial3: true,
+    ;;           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+    ;;         ),
     .home my-home-page)))
