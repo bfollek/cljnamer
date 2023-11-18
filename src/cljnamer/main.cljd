@@ -6,6 +6,16 @@
 
 (defonce app-state (atom {:current (.random ew/WordPair)}))
 
+(defn add-button
+  []
+  (f/widget
+   (m/ElevatedButton
+    .onPressed
+    #(swap! app-state assoc :current (.random ew/WordPair))
+    .child
+    (m/Text "Next"))))
+
+
 (def my-home-page
   (f/widget
    :watch [st app-state]
@@ -17,11 +27,12 @@
     (m/Column
      .children [(m/Text "A pseudorandom idea:")
                 (m/Text (str first-word second-word))
-                (m/ElevatedButton
-                 .onPressed
-                 #(swap! app-state assoc :current (.random ew/WordPair))
-                 .child
-                 (m/Text "Next"))]))))
+                (add-button)]))))
+                ;; (m/ElevatedButton
+                ;;  .onPressed
+                ;;  #(swap! app-state assoc :current (.random ew/WordPair))
+                ;;  .child
+                ;;  (m/Text "Next"))]))))
 
 (defn main []
   (f/run
