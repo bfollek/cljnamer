@@ -6,8 +6,7 @@
 
 (defonce app-state (atom {:current (.random ew/WordPair)}))
 
-(defn next-button
-  []
+(def next-button
   (f/widget
    (m/ElevatedButton
     .onPressed
@@ -26,7 +25,7 @@
     (m/Column
      .children [(m/Text "A pseudorandom idea:")
                 (m/Text (str first-word second-word))
-                (next-button)]))))
+                next-button]))))
 
 (defn main []
   (f/run
