@@ -19,10 +19,10 @@
    :context ctx
    :let [theme (m/Theme.of ctx)]
    (m/Card
-    .color (^m/Color .-colorScheme.primary ^m/Theme theme)
+    .color (-> theme .-colorScheme .-primary)
     .child
     (m/Padding .padding (m/EdgeInsets.all 20)
-               .child   (m/Text (.-asLowerCase ^ew/WordPair pair))))))
+               .child   (m/Text (-> ^ew/WordPair pair .-asLowerCase))))))
 
 (def my-home-page
   (f/widget
