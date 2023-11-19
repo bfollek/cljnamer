@@ -26,12 +26,11 @@
 (def my-home-page
   (f/widget
    :watch [st app-state]
-   :let [pair (:current st)]
    (m/Scaffold
     .body
     (m/Column
      .children [(m/Text "A pseudorandom idea:")
-                (big-card pair)
+                (big-card (:current st))
                 next-button]))))
 
 (defn main []
