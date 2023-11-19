@@ -27,22 +27,6 @@
   (f/run
    (m/MaterialApp
     .title "ClojureDot Namer App"
-    ;.theme (m/ThemeData .useMaterial3 true
-    ;.theme (m/ThemeData .primarySwatch m/Colors.blue))
-    ;.theme (m/ThemeData .colorScheme (.fromSeed m/ColorScheme m/Colors.red))
     .theme (m/ThemeData .useMaterial3 true
                         .colorScheme (m/ColorScheme.fromSeed .seedColor m/Colors.deepOrange))
-;; {:title "Flutter/MX Counter Demo"
-;;      :theme (m/ThemeData .useMaterial3 true
-;;               .colorScheme (m/ColorScheme.fromSeed
-;;                   :backgroundColor (cF (.-inversePrimary
-;;                                          (.-colorScheme ^m/ThemeData (mav :theme))))})
-;;        :floatingActionButton
-
-    ;.theme theme
-    ;; theme: ThemeData(
-    ;;           useMaterial3: true,
-                        ;(m/ThemeData .colorScheme m/Colors.blue))
-    ;;           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
-    ;;         ),
     .home my-home-page)))
