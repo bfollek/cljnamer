@@ -27,6 +27,7 @@
   (f/run
    (m/MaterialApp
     .title "ClojureDot Namer App"
+    .theme (m/ThemeData .useMaterial3 true)
     ;.theme theme
     ;; theme: ThemeData(
     ;;           useMaterial3: true,
