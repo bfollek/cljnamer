@@ -31,7 +31,6 @@
     .body
     (m/Column
      .children [(m/Text "A pseudorandom idea:")
-                ;(m/Text (.-asLowerCase ^ew/WordPair pair))
                 (big-card pair)
                 next-button]))))
 
