@@ -16,11 +16,12 @@
 (def my-home-page
   (f/widget
    :watch [st app-state]
+   :let [pair (:current st)]
    (m/Scaffold
     .body
     (m/Column
      .children [(m/Text "A pseudorandom idea:")
-                (m/Text (.-asLowerCase ^ew/WordPair (:current st)))
+                (m/Text (.-asLowerCase ^ew/WordPair pair))
                 next-button]))))
 
 (defn main []
