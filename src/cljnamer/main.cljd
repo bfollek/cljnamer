@@ -19,7 +19,7 @@
    :context ctx
    :let [theme (m/Theme.of ctx)]
    (m/Card
-    .color (.-colorScheme.primary ^m/Theme theme)
+    .color (^m/Color .-colorScheme.primary ^m/Theme theme)
     .child
     (m/Padding .padding (m/EdgeInsets.all 20)
                .child   (m/Text (.-asLowerCase ^ew/WordPair pair))))))
