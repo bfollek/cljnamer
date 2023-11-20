@@ -14,7 +14,7 @@
     (m/Text "Next"))))
 
 (defn big-card
-  [pair]
+  [^ew/WordPair pair]
   (f/widget
    :context ctx
    :let [theme (m/Theme.of ctx)
@@ -25,8 +25,11 @@
    (m/Card
     .color color-primary
     .child
-    (m/Padding .padding (m/EdgeInsets.all 20)
-               .child   (m/Text (-> ^ew/WordPair pair .-asLowerCase), .style style)))))
+    (m/Padding
+     .padding (m/EdgeInsets.all 20)
+     .child   (m/Text (.-asLowerCase pair)
+                      .style style
+                      .semanticsLabel (str (.-first pair) (.-second pair)))))))
 
 (def my-home-page
   (f/widget
