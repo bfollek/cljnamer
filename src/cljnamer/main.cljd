@@ -18,9 +18,9 @@
   (f/widget
    :context ctx
    :let [theme (m/Theme.of ctx)
-         text-color (-> theme .-colorScheme .-onPrimary)
+         color (-> theme .-colorScheme .-onPrimary)
          display-medium (-> theme .-textTheme .-displayMedium)
-         style (.copyWith display-medium text-color)]
+         style (.copyWith display-medium .color color)]
    (m/Card
     .color (-> theme .-colorScheme .-primary)
     .child
