@@ -40,8 +40,9 @@
      .child
      (m/Column
       .mainAxisAlignment m/MainAxisAlignment.center
-      .children [(m/Text "A pseudorandom idea:")
+      .children [;(m/Text "A pseudorandom idea:")
                  (big-card (:current st))
+                 (m/SizedBox .height 10)
                  next-button])))))
 
 (defn main []
