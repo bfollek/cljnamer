@@ -36,11 +36,13 @@
    :watch [st app-state]
    (m/Scaffold
     .body
-    (m/Column
-     .mainAxisAlignment m/MainAxisAlignment.center
-     .children [(m/Text "A pseudorandom idea:")
-                (big-card (:current st))
-                next-button]))))
+    (m/Center
+     .child
+     (m/Column
+      .mainAxisAlignment m/MainAxisAlignment.center
+      .children [(m/Text "A pseudorandom idea:")
+                 (big-card (:current st))
+                 next-button])))))
 
 (defn main []
   (f/run
