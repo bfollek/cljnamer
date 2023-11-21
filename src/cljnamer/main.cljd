@@ -6,18 +6,19 @@
             [cljd.flutter :as f]))
 
 (defonce app-state (atom {:current (.random ew/WordPair)
+                          :debug false
                           :favorites #()}))
 
-;; (defn debug-print
-;;   [msg]
-;;   (when (or m/debugShowCheckedModeBanner ff/kDebugMode) (dart/print msg)))
+(defn debug-print
+  [msg]
+  (when (:debug @app-state) (dart/print msg)))
 
 (def next-button
   (f/widget
    (m/ElevatedButton
     .onPressed
     (do
-      (dart/print "Changing current")
+      (debug-print "Changing current")
       #(swap! app-state assoc :current (.random ew/WordPair)))
     .child
     (m/Text "Next"))))
