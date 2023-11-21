@@ -55,9 +55,11 @@
 
 (defn main []
   (f/run
-   (m/MaterialApp
-    .title "ClojureDot Namer App"
-    .theme (m/ThemeData
-            .useMaterial3 true
-            .colorScheme (m/ColorScheme.fromSeed .seedColor m/Colors.deepOrange))
-    .home my-home-page)))
+   :let [app
+         (m/MaterialApp
+          .title "ClojureDot Namer App"
+          .theme (m/ThemeData
+                  .useMaterial3 true
+                  .colorScheme (m/ColorScheme.fromSeed .seedColor m/Colors.deepOrange))
+          .home my-home-page)]
+   app))
