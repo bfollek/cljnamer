@@ -12,16 +12,6 @@
   [msg]
   (when (:debug @app-state) (dart/print msg)))
 
-;; void toggleFavorite() {
-;;   if (favorites.contains (current)) {
-;;     favorites.remove (current);
-;;   } else {
-;;     favorites.add (current);
-;;   }                                                       }
-;;   notifyListeners ();
-;; }
-
-
 (def next-button
   (f/widget
    (m/ElevatedButton
@@ -53,19 +43,16 @@
 
 (def my-home-page
   (f/widget
-   ;:bind {:app-state app-state}
-   ;:watch [current (f/$ (:current app-state))
-   ;        favorites (f/$ (:favorites app-state))]
    ;:watch [st app-state]
-   :watch [st app-state]
-   :let [pair (:current st)]
+   ;:let [pair (:current st)]
+   :watch [{:keys [current favorites]} app-state]
    (m/Scaffold
     .body
     (m/Center
      .child
      (m/Column
       .mainAxisAlignment m/MainAxisAlignment.center
-      .children [(big-card pair)
+      .children [(big-card current)
                  (m/SizedBox .height 10)
                  next-button])))))
 
