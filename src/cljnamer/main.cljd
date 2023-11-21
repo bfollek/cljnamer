@@ -16,9 +16,9 @@
   (f/widget
    (m/ElevatedButton
     .onPressed
-    (do
-      (debug-print "Changing current")
-      #(swap! app-state assoc :current (.random ew/WordPair)))
+    #(do
+       (swap! app-state assoc :current (.random ew/WordPair))
+       (debug-print (str "Changed current to " (:current @app-state))))
     .child
     (m/Text "Next"))))
 
@@ -64,4 +64,5 @@
           .home my-home-page)]
    (do
      (swap! app-state assoc :debug (.-debugShowCheckedModeBanner app))
+     (dart/print (str "debug is " (:debug @app-state) "."))
      app)))
