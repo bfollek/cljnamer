@@ -52,7 +52,9 @@
 
 (def my-home-page
   (f/widget
-   :watch [current (f/$ (:current (f/<! app-state)))]
+   :bind {:app-state app-state}
+   :watch [current (f/$ (:current (f/<! app-state)))
+           favorites (f/$ (:favorites (f/<! app-state)))]
    (m/Scaffold
     .body
     (m/Center
