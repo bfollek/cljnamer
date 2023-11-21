@@ -1,11 +1,16 @@
 (ns cljnamer.main
   (:require ["package:flutter/material.dart" :as m]
+            ["package:flutter/foundation.dart" :as ff]
             ["package:english_words/english_words.dart" :as ew]
             ["dart:core" :as dart]
             [cljd.flutter :as f]))
 
 (defonce app-state (atom {:current (.random ew/WordPair)
                           :favorites #()}))
+
+;; (defn debug-print
+;;   [msg]
+;;   (when (or m/debugShowCheckedModeBanner ff/kDebugMode) (dart/print msg)))
 
 (def next-button
   (f/widget
