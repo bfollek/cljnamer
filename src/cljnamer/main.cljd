@@ -34,7 +34,8 @@
 
 (def my-home-page
   (f/widget
-   :watch [{current :current} app-state]
+   ;:watch [{current :current} app-state]
+   :watch [current (f/$ (:current (f/<! app-state)))]
    (m/Scaffold
     .body
     (m/Center
