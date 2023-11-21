@@ -12,6 +12,16 @@
   [msg]
   (when (:debug @app-state) (dart/print msg)))
 
+;; void toggleFavorite() {
+;;   if (favorites.contains (current)) {
+;;     favorites.remove (current);
+;;   } else {
+;;     favorites.add (current);
+;;   }                                                       }
+;;   notifyListeners ();
+;; }
+
+
 (def next-button
   (f/widget
    (m/ElevatedButton
