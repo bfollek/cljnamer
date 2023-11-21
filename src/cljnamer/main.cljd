@@ -33,7 +33,7 @@
     (m/Text "Next"))))
 
 (defn big-card
-  ;[^ew/WordPair pair]
+  [^ew/WordPair pair]
   [pair]
   (f/widget
    :context ctx
