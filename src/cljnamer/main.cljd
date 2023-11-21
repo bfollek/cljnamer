@@ -1,6 +1,7 @@
 (ns cljnamer.main
   (:require ["package:flutter/material.dart" :as m]
             ["package:english_words/english_words.dart" :as ew]
+            ["dart:core" :as dart]
             [cljd.flutter :as f]))
 
 (defonce app-state (atom {:current (.random ew/WordPair)
@@ -10,7 +11,9 @@
   (f/widget
    (m/ElevatedButton
     .onPressed
-    #(swap! app-state assoc :current (.random ew/WordPair))
+    (do
+      (dart/print "Changing current")
+      #(swap! app-state assoc :current (.random ew/WordPair)))
     .child
     (m/Text "Next"))))
 
