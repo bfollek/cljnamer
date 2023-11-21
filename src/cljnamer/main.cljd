@@ -12,16 +12,16 @@
   [msg]
   (when (:debug @app-state) (dart/print msg)))
 
-;; (defn favorites-button
-;;   [current favorites]
-;;   (f/widget
-;;    (m/ElevatedButton
-;;     .onPressed
-;;     #(do
-;;        (swap! app-state assoc :current (.random ew/WordPair))
-;;        (debug-print (str "Changed current to " (:current @app-state))))
-;;     .child
-;;     (m/Text "Favorites"))))
+(defn favorites-button
+  [current favorites]
+  (f/widget
+   (m/ElevatedButton
+    .onPressed
+    #(do
+       (swap! app-state assoc :current (.random ew/WordPair))
+       (debug-print (str "Changed current to " (:current @app-state))))
+    .child
+    (m/Text "Favorites"))))
 
 (def next-button
   (f/widget
