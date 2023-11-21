@@ -12,6 +12,17 @@
   [msg]
   (when (:debug @app-state) (dart/print msg)))
 
+;; (defn favorites-button
+;;   [current favorites]
+;;   (f/widget
+;;    (m/ElevatedButton
+;;     .onPressed
+;;     #(do
+;;        (swap! app-state assoc :current (.random ew/WordPair))
+;;        (debug-print (str "Changed current to " (:current @app-state))))
+;;     .child
+;;     (m/Text "Favorites"))))
+
 (def next-button
   (f/widget
    (m/ElevatedButton
@@ -43,8 +54,6 @@
 
 (def my-home-page
   (f/widget
-   ;:watch [st app-state]
-   ;:let [pair (:current st)]
    :watch [{:keys [current favorites]} app-state]
    (m/Scaffold
     .body
@@ -55,6 +64,7 @@
       .children [(big-card current)
                  (m/SizedBox .height 10)
                  next-button])))))
+                 ;(favorites-button current favorites)])))))
 
 (defn main []
   (f/run
