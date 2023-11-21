@@ -33,7 +33,8 @@
     (m/Text "Next"))))
 
 (defn big-card
-  [^ew/WordPair pair]
+  ;[^ew/WordPair pair]
+  [pair]
   (f/widget
    :context ctx
    :let [theme (m/Theme.of ctx)
@@ -52,16 +53,19 @@
 
 (def my-home-page
   (f/widget
-   :bind {:app-state app-state}
-   :watch [current (f/$ (:current (f/<! app-state)))
-           favorites (f/$ (:favorites (f/<! app-state)))]
+   ;:bind {:app-state app-state}
+   ;:watch [current (f/$ (:current app-state))
+   ;        favorites (f/$ (:favorites app-state))]
+   ;:watch [st app-state]
+   :watch [st app-state]
+   :let [pair (:current st)]
    (m/Scaffold
     .body
     (m/Center
      .child
      (m/Column
       .mainAxisAlignment m/MainAxisAlignment.center
-      .children [(big-card current)
+      .children [(big-card pair)
                  (m/SizedBox .height 10)
                  next-button])))))
 
