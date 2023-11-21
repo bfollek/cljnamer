@@ -1,6 +1,5 @@
 (ns cljnamer.main
   (:require ["package:flutter/material.dart" :as m]
-            ["package:flutter/foundation.dart" :as ff]
             ["package:english_words/english_words.dart" :as ew]
             ["dart:core" :as dart]
             [cljd.flutter :as f]))
@@ -63,4 +62,6 @@
                   .useMaterial3 true
                   .colorScheme (m/ColorScheme.fromSeed .seedColor m/Colors.deepOrange))
           .home my-home-page)]
-   app))
+   (do
+     (swap! app-state assoc :debug (.-debugShowCheckedModeBanner app))
+     app)))
