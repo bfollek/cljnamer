@@ -3,7 +3,8 @@
             ["package:english_words/english_words.dart" :as ew]
             [cljd.flutter :as f]))
 
-(defonce app-state (atom {:current (.random ew/WordPair)}))
+(defonce app-state (atom {:current (.random ew/WordPair)
+                          :favorites #()}))
 
 (def next-button
   (f/widget
@@ -33,14 +34,14 @@
 
 (def my-home-page
   (f/widget
-   :watch [st app-state]
+   :watch [{current :current} app-state]
    (m/Scaffold
     .body
     (m/Center
      .child
      (m/Column
       .mainAxisAlignment m/MainAxisAlignment.center
-      .children [(big-card (:current st))
+      .children [(big-card current)
                  (m/SizedBox .height 10)
                  next-button])))))
 
