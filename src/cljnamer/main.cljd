@@ -20,7 +20,7 @@
     ;; Slick swap code from https://github.com/Tensegritics/ClojureDart/blob/main/samples/first_flutter_app_codelabs/src/sample/first_flutter_app_codelabs.cljd#L39C31-L39C31
     (fn [] (do
              (swap! app-state update :favorites #((if (% current) disj conj) % current))
-             (debug-print (str "Updated favorites to " (:favorites @app-state))))))
+             (debug-print (str "Changed favorites to " (:favorites @app-state))))))
    .child
    (m/Text "Favorites")))
 
