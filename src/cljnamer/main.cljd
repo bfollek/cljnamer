@@ -65,6 +65,7 @@
       .children [(big-card current)
                  (m/SizedBox .height 10)
                  (m/Row
+                  .mainAxisSize m/MainAxisSize.min
                   .children
                   [next-button
                    (favorites-button current favorites)])])))))
