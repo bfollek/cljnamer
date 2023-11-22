@@ -6,7 +6,7 @@
 
 (defonce app-state (atom {:current (.random ew/WordPair)
                           :debug false
-                          :favorites #()}))
+                          :favorites #{}}))
 
 (defn debug-print
   [msg]
@@ -17,9 +17,15 @@
   (f/widget
    (m/ElevatedButton
     .onPressed
-    #(do
-       (swap! app-state assoc :current (.random ew/WordPair))
-       (debug-print (str "Changed current to " (:current @app-state))))
+    ;; https://github.com/Tensegritics/ClojureDart/blob/main/samples/first_flutter_app_codelabs/src/sample/first_flutter_app_codelabs.cljd#L39C31-L39C31
+    (fn [] (swap! app-state update :favorites #((if (% current) disj conj) % current)))
+    ;; (fn []
+    ;;   (do
+    ;;     ;; set in function position tests membership
+    ;;     (let [f (if (favorites current) disj conj)]
+    ;;       ;; https://github.com/Tensegritics/ClojureDart/blob/main/samples/first_flutter_app_codelabs/src/sample/first_flutter_app_codelabs.cljd#L39C31-L39C31
+    ;;       (swap! app-state update :favorites #(f % current)))
+    ;;     (debug-print (str "Updated favorites to " (:favorites @app-state))))))
     .child
     (m/Text "Favorites"))))
 
