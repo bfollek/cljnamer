@@ -25,12 +25,6 @@
     .icon (m/Icon icon)
     .label (m/Text "Like"))))
 
-;; (m/ElevatedButton.icon
-;;  .onPressed (fn [] (swap! app-state update :favorites #((if (% pair) disj conj) % pair)))
-;;  .icon (m/Icon icon)
-;;  .label (m/Text "Like"))
-
-
 (def next-button
   (f/widget
    (m/ElevatedButton
