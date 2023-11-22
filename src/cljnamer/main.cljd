@@ -64,8 +64,10 @@
       .mainAxisAlignment m/MainAxisAlignment.center
       .children [(big-card current)
                  (m/SizedBox .height 10)
-                 next-button;])))))
-                 (favorites-button current favorites)])))))
+                 (m/Row
+                  .children
+                  [next-button
+                   (favorites-button current favorites)])])))))
 
 (defn main []
   (f/run
