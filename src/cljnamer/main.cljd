@@ -17,17 +17,12 @@
   (f/widget
    (m/ElevatedButton
     .onPressed
-    ;; https://github.com/Tensegritics/ClojureDart/blob/main/samples/first_flutter_app_codelabs/src/sample/first_flutter_app_codelabs.cljd#L39C31-L39C31
-    (fn [] (swap! app-state update :favorites #((if (% current) disj conj) % current)))
-    ;; (fn []
-    ;;   (do
-    ;;     ;; set in function position tests membership
-    ;;     (let [f (if (favorites current) disj conj)]
-    ;;       ;; https://github.com/Tensegritics/ClojureDart/blob/main/samples/first_flutter_app_codelabs/src/sample/first_flutter_app_codelabs.cljd#L39C31-L39C31
-    ;;       (swap! app-state update :favorites #(f % current)))
-    ;;     (debug-print (str "Updated favorites to " (:favorites @app-state))))))
-    .child
-    (m/Text "Favorites"))))
+    ;; Slick swap code from https://github.com/Tensegritics/ClojureDart/blob/main/samples/first_flutter_app_codelabs/src/sample/first_flutter_app_codelabs.cljd#L39C31-L39C31
+    (fn [] (do
+             (swap! app-state update :favorites #((if (% current) disj conj) % current))
+             (debug-print (str "Updated favorites to " (:favorites @app-state))))))
+   .child
+   (m/Text "Favorites")))
 
 (def next-button
   (f/widget
