@@ -54,23 +54,28 @@
                       .style style
                       .semanticsLabel (str (.-first pair) (.-second pair)))))))
 
+(defn generator-page
+  [current favorites]
+  (f/widget
+   (m/Center
+    .child
+    (m/Column
+     .mainAxisAlignment m/MainAxisAlignment.center
+     .children [(big-card current)
+                (m/SizedBox .height 10)
+                (m/Row
+                 .mainAxisSize m/MainAxisSize.min
+                 .children
+                 [(like-button current favorites)
+                  (m/SizedBox .width 10)
+                  next-button])]))))
+
 (def my-home-page
   (f/widget
    :watch [{:keys [current favorites]} app-state]
    (m/Scaffold
     .body
-    (m/Center
-     .child
-     (m/Column
-      .mainAxisAlignment m/MainAxisAlignment.center
-      .children [(big-card current)
-                 (m/SizedBox .height 10)
-                 (m/Row
-                  .mainAxisSize m/MainAxisSize.min
-                  .children
-                  [(like-button current favorites)
-                   (m/SizedBox .width 10)
-                   next-button])])))))
+    (generator-page current favorites))))
 
 (defn main []
   (f/run
