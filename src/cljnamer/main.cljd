@@ -70,11 +70,11 @@
                   (m/SizedBox .width 10)
                   next-button])]))))
 
-(defonce my-home-page-state (atom {:selected-index 0}))
-(def my-home-page
+(defonce ^:private home-page-state (atom {:selected-index 0}))
+(def home-page
   (f/widget
    :watch [{:keys [current favorites]} app-state]
-   :watch [{:keys [selected-index]} my-home-page-state]
+   :watch [{:keys [selected-index]} home-page-state]
    (m/Scaffold
     .body
     (m/Row
@@ -104,7 +104,7 @@
           .theme (m/ThemeData
                   .useMaterial3 true
                   .colorScheme (m/ColorScheme.fromSeed .seedColor m/Colors.deepOrange))
-          .home my-home-page)]
+          .home home-page)]
    (do
      (swap! app-state assoc :debug (.-debugShowCheckedModeBanner app))
      (dart/print (str "debug is " (:debug @app-state) "."))
