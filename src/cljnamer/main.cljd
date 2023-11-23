@@ -100,7 +100,7 @@
   (f/run
    :let [app
          (m/MaterialApp
-          .title "ClojureDot Namer App"
+          .title "ClojureDart Namer App"
           .theme (m/ThemeData
                   .useMaterial3 true
                   .colorScheme (m/ColorScheme.fromSeed .seedColor m/Colors.deepOrange))
