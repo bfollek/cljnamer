@@ -6,7 +6,8 @@
 
 (defonce app-state (atom {:current (.random ew/WordPair)
                           :debug false
-                          :favorites #{}}))
+                          :favorites #{}
+                          :selected-index 0}))
 
 (defn debug-print
   [msg]
@@ -72,10 +73,27 @@
 
 (def my-home-page
   (f/widget
-   :watch [{:keys [current favorites]} app-state]
+   :watch [{:keys [current favorites selected-index]} app-state]
    (m/Scaffold
     .body
-    (generator-page current favorites))))
+    (m/Row
+     .children
+     [(m/SafeArea
+       .child (m/NavigationRail
+               .extended false
+               .selectedIndex selected-index
+               .onDestinationSelected #(debug-print (str "selected " %))
+               .destinations [(m/NavigationRailDestination
+                               .icon (m/Icon m/Icons.home)
+                               .label (m/Text "Home"))
+                              (m/NavigationRailDestination
+                               .icon (m/Icon m/Icons.favorite)
+                               .label (m/Text "Favorites"))]))
+      (m/Expanded
+       .child
+       (m/Container
+        ;;     color: Theme.of(context).colorScheme.primaryContainer,
+        .child (generator-page current favorites)))]))))
 
 (defn main []
   (f/run
