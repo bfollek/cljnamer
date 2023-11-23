@@ -70,7 +70,7 @@
                   (m/SizedBox .width 10)
                   next-button])]))))
 
-(defonce ^:private home-page-state (atom {:selected-index 0}))
+(defonce home-page-state (atom {:selected-index 0}))
 (def home-page
   (f/widget
    :watch [{:keys [current favorites]} app-state]
