@@ -90,7 +90,10 @@
        .child (m/NavigationRail
                .extended false
                .selectedIndex selected-index
-               .onDestinationSelected #(debug-print (str "selected " %))
+               .onDestinationSelected
+               #(do
+                  (swap! home-page-state assoc :selected-index %)
+                  (debug-print (str "selected " %)))
                .destinations [(m/NavigationRailDestination
                                .icon (m/Icon m/Icons.home)
                                .label (m/Text "Home"))
@@ -101,7 +104,7 @@
        .child
        (m/Container
         .color color-container,
-        .child (generator-page current favorites)))]))))
+        .child page))]))))
 
 (defn main []
   (f/run
