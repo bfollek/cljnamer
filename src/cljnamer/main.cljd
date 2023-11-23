@@ -77,7 +77,11 @@
    :watch [{:keys [selected-index]} home-page-state]
    :context ctx
    :let [theme (m/Theme.of ctx)
-         color-container (-> theme .-colorScheme .-primaryContainer)]
+         color-container (-> theme .-colorScheme .-primaryContainer)
+         page (case selected-index
+                0 (generator-page current favorites)
+                1 (m/Placeholder)
+                (throw (dart/UnimplementedError "no widget for selected-index")))]
    (m/Scaffold
     .body
     (m/Row
