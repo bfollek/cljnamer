@@ -6,8 +6,7 @@
 
 (defonce app-state (atom {:current (.random ew/WordPair)
                           :debug false
-                          :favorites #{}
-                          :selected-index 0}))
+                          :favorites #{}}))
 
 (defn debug-print
   [msg]
@@ -71,9 +70,11 @@
                   (m/SizedBox .width 10)
                   next-button])]))))
 
+(defonce my-home-page-state (atom {:selected-index 0}))
 (def my-home-page
   (f/widget
-   :watch [{:keys [current favorites selected-index]} app-state]
+   :watch [{:keys [current favorites]} app-state]
+   :watch [{:keys [selected-index]} my-home-page-state]
    (m/Scaffold
     .body
     (m/Row
