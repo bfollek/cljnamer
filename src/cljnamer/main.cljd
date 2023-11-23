@@ -82,29 +82,30 @@
                 0 (generator-page current favorites)
                 1 (m/Placeholder)
                 (throw (dart/UnimplementedError "no widget for selected-index")))]
-   (m/Scaffold
-    .body
-    (m/Row
-     .children
-     [(m/SafeArea
-       .child (m/NavigationRail
-               .extended false
-               .selectedIndex selected-index
-               .onDestinationSelected
-               #(do
-                  (swap! home-page-state assoc :selected-index %)
-                  (debug-print (str "selected " %)))
-               .destinations [(m/NavigationRailDestination
-                               .icon (m/Icon m/Icons.home)
-                               .label (m/Text "Home"))
-                              (m/NavigationRailDestination
-                               .icon (m/Icon m/Icons.favorite)
-                               .label (m/Text "Favorites"))]))
-      (m/Expanded
-       .child
-       (m/Container
-        .color color-container,
-        .child page))]))))
+   (m/LayoutBuilder .builder (fn [context constraints]
+                               (m/Scaffold
+                                .body
+                                (m/Row
+                                 .children
+                                 [(m/SafeArea
+                                   .child (m/NavigationRail
+                                           .extended false
+                                           .selectedIndex selected-index
+                                           .onDestinationSelected
+                                           #(do
+                                              (swap! home-page-state assoc :selected-index %)
+                                              (debug-print (str "selected " %)))
+                                           .destinations [(m/NavigationRailDestination
+                                                           .icon (m/Icon m/Icons.home)
+                                                           .label (m/Text "Home"))
+                                                          (m/NavigationRailDestination
+                                                           .icon (m/Icon m/Icons.favorite)
+                                                           .label (m/Text "Favorites"))]))
+                                  (m/Expanded
+                                   .child
+                                   (m/Container
+                                    .color color-container,
+                                    .child page))]))))))
 
 (defn main []
   (f/run
