@@ -75,6 +75,9 @@
   (f/widget
    :watch [{:keys [current favorites]} app-state]
    :watch [{:keys [selected-index]} home-page-state]
+   :context ctx
+   :let [theme (m/Theme.of ctx)
+         color-container (-> theme .-colorScheme .-primaryContainer)]
    (m/Scaffold
     .body
     (m/Row
@@ -93,7 +96,7 @@
       (m/Expanded
        .child
        (m/Container
-        ;;     color: Theme.of(context).colorScheme.primaryContainer,
+        .color color-container,
         .child (generator-page current favorites)))]))))
 
 (defn main []
