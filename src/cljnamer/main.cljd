@@ -90,14 +90,12 @@
        .children
        (into [(m/Padding .padding (m/EdgeInsets.all 20))
               (m/Text (str "You have " cnt " favorite" (if (= cnt 1) "" "s") ":"))]
-             [(m/ListTile
-               .leading (m/Icon m/Icons.favorite)
-               .title (m/Text (.-asLowerCase ^ew/WordPair (first favorites))))]))))))
-
-      ;;  (map #(m/ListTile
-      ;;         .leading (m/Icon m/Icons.favorite)
-      ;;         .title (m/Text (.-asLowerCase ^ew/WordPair %)))))
-      ;; favorites))))
+            ;;  [(m/ListTile
+            ;;    .leading (m/Icon m/Icons.favorite)
+            ;;    .title (m/Text (.-asLowerCase ^ew/WordPair (first favorites))))]))))))
+             (map #(m/ListTile
+                    .leading (m/Icon m/Icons.favorite)
+                    .title (m/Text (.-asLowerCase ^ew/WordPair %))) favorites)))))))
 
 
 
