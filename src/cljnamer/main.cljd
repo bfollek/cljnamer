@@ -87,14 +87,24 @@
       .child
       (m/ListView
        .children
-       [(m/Padding
-         .padding (m/EdgeInsets.all 20)
-         .child (m/Text (str "You have " (count favorites) " favorites.")))
-        ;(doall (map #(add-favorite %) favorites))])))))
-        (loop [favs favorites]
-          (when (seq favs)
-            (add-favorite (first favs))
-            (recur (rest favs))))])))))
+       [(f/widget
+         (m/Padding .padding (m/EdgeInsets.all 20))
+         (m/Text (str "You have " (count favorites) " favorites")))])))))
+      ;;  (map #(m/ListTile
+      ;;         .leading (m/Icon m/Icons.favorite)
+      ;;         .title (m/Text (.-asLowerCase ^ew/WordPair %)))))
+      ;; favorites))))
+
+
+
+      ;;  (into [(m/Padding
+      ;;          .padding (m/EdgeInsets.all 20)
+      ;;          .child (m/Text (str "You have " (count favorites) " favorites.")))]
+      ;;        (map #(add-favorite %) favorites)))))))
+            ;;  (loop [favs favorites]
+            ;;    (when (seq favs)
+            ;;      (add-favorite (first favs))
+            ;;      (recur (rest favs))))))))))
        ;;)))))
 
 (defonce home-page-state (atom {:selected-index 0}))
