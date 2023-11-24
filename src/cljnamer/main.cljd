@@ -90,9 +90,7 @@
        .children
        (into [(m/Padding .padding (m/EdgeInsets.all 20))
               (m/Text (str "You have " cnt " favorite" (if (= cnt 1) "" "s") ":"))]
-             (map #(m/ListTile
-                    .leading (m/Icon m/Icons.favorite)
-                    .title (m/Text (.-asLowerCase ^ew/WordPair %)))
+             (map #(add-favorite %)
                   (sort-by #(.-asLowerCase ^ew/WordPair %) favorites))))))))
 
 (defonce home-page-state (atom {:selected-index 0}))
