@@ -89,7 +89,6 @@
       (m/ListView
        .children
        (into [(m/Padding .padding (m/EdgeInsets.all 20))
-              ;(m/Text (format "You have %d favorite%s:" cnt (if (= cnt 1) "" "s")))]
               (m/Text (str "You have " cnt " favorite" (if (= cnt 1) "" "s") ":"))]
              (map #(m/ListTile
                     .leading (m/Icon m/Icons.favorite)
