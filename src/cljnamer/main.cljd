@@ -87,9 +87,8 @@
       .child
       (m/ListView
        .children
-       [(f/widget
-         (m/Padding .padding (m/EdgeInsets.all 20))
-         (m/Text (str "You have " (count favorites) " favorites")))])))))
+       [(m/Padding .padding (m/EdgeInsets.all 20))
+        (m/Text (str "You have " (count favorites) " favorites"))])))))
       ;;  (map #(m/ListTile
       ;;         .leading (m/Icon m/Icons.favorite)
       ;;         .title (m/Text (.-asLowerCase ^ew/WordPair %)))))
