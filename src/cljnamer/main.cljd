@@ -75,7 +75,7 @@
   (f/widget
    (m/ListTile
     .leading (m/Icon m/Icons.favorite)
-    .title (m/Text (.-asLowerCase favorite)))))
+    .title (m/Text (.-asLowerCase ^ew/WordPair favorite)))))
 
 (defn favorites-page [favorites]
   (f/widget
@@ -87,14 +87,15 @@
       .child
       (m/ListView
        .children
-       (m/Padding
-        .padding (m/EdgeInsets.all 20)
-        .child (m/Text (str "You have " (count favorites) " favorites.")))
-       ;(map (m/ListTile #(add-favorite %) favorites)))))))
-       (loop [favs favorites]
-         (when (seq favs)
-           (add-favorite (first favs))
-           (recur (rest favs)))))))))
+       [(m/Padding
+         .padding (m/EdgeInsets.all 20)
+         .child (m/Text (str "You have " (count favorites) " favorites.")))
+        ;(doall (map #(add-favorite %) favorites))])))))
+        (loop [favs favorites]
+          (when (seq favs)
+            (add-favorite (first favs))
+            (recur (rest favs))))])))))
+       ;;)))))
 
 (defonce home-page-state (atom {:selected-index 0}))
 (def home-page
