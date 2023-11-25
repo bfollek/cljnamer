@@ -26,14 +26,13 @@
     .label (m/Text "Like"))))
 
 (def next-button
-  (f/widget
-   (m/ElevatedButton
-    .onPressed
-    #(do
-       (swap! app-state assoc :current (.random ew/WordPair))
-       (debug-print (str "Changed current to " (:current @app-state))))
-    .child
-    (m/Text "Next"))))
+  (m/ElevatedButton
+   .onPressed
+   #(do
+      (swap! app-state assoc :current (.random ew/WordPair))
+      (debug-print (str "Changed current to " (:current @app-state))))
+   .child
+   (m/Text "Next")))
 
 (defn big-card
   [^ew/WordPair pair]
@@ -56,19 +55,18 @@
 
 (defn generator-page
   [current favorites]
-  (f/widget
-   (m/Center
-    .child
-    (m/Column
-     .mainAxisAlignment m/MainAxisAlignment.center
-     .children [(big-card current)
-                (m/SizedBox .height 10)
-                (m/Row
-                 .mainAxisSize m/MainAxisSize.min
-                 .children
-                 [(like-button current favorites)
-                  (m/SizedBox .width 10)
-                  next-button])]))))
+  (m/Center
+   .child
+   (m/Column
+    .mainAxisAlignment m/MainAxisAlignment.center
+    .children [(big-card current)
+               (m/SizedBox .height 10)
+               (m/Row
+                .mainAxisSize m/MainAxisSize.min
+                .children
+                [(like-button current favorites)
+                 (m/SizedBox .width 10)
+                 next-button])])))
 
 (defn list-favorite
   [favorite color]
