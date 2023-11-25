@@ -71,25 +71,31 @@
                   next-button])]))))
 
 (defn list-favorite
-  [favorite]
+  [favorite color]
   (m/ListTile
    .leading (m/Icon m/Icons.favorite)
-   .title (m/Text (.-asLowerCase ^ew/WordPair favorite))))
+   .title (m/Text (.-asLowerCase ^ew/WordPair favorite)
+                  .style (m/TextStyle .color color))))
 
 (defn favorites-page [favorites]
   (f/widget
-   :let [cnt (count favorites)]
+   :context ctx
+   :let [cnt (count favorites)
+         theme (m/Theme.of ctx)
+         color-primary (-> theme .-colorScheme .-primary)]
    (if (= cnt 0)
      (m/Center
       .child
-      (m/Text "No favorites yet."))
+      (m/Text "No favorites yet."
+              .style (m/TextStyle .color color-primary)))
      (m/Center
       .child
       (m/ListView
        .children
        (into [(m/Padding .padding (m/EdgeInsets.all 20))
-              (m/Text (str "You have " cnt " favorite" (if (= cnt 1) "" "s") ":"))]
-             (map #(list-favorite %)
+              (m/Text (str "You have " cnt " favorite" (if (= cnt 1) "" "s") ":")
+                      .style (m/TextStyle .color color-primary))]
+             (map #(list-favorite % color-primary)
                   (sort-by #(.-asLowerCase ^ew/WordPair %) favorites))))))))
 
 (defonce home-page-state (atom {:selected-index 0}))
