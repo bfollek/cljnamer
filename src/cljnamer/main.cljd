@@ -71,7 +71,7 @@
   [favorite color]
   (m/ListTile
    .leading (m/Icon m/Icons.favorite)
-   .title (m/Text (.-asLowerCase ^ew/WordPair favorite)
+   .title (m/Text favorite
                   .style (m/TextStyle .color color))))
 
 (defn favorites-page [favorites]
@@ -80,7 +80,7 @@
    :let [cnt (count favorites)
          theme (m/Theme.of ctx)
          color-primary (-> theme .-colorScheme .-primary)
-         fav-lc (into {} (map (fn [fav] [fav (.-asLowerCase fav)]) favorites))]
+         fav-lc (into [] (map (fn [fav] (.-asLowerCase ^ew/WordPair fav)) favorites))]
    (if (= cnt 0)
      (m/Center
       .child
@@ -94,7 +94,7 @@
               (m/Text (str "You have " cnt " favorite" (if (= cnt 1) "" "s") ":")
                       .style (m/TextStyle .color color-primary))]
              (map #(list-favorite % color-primary)
-                  (sort-by #(.-asLowerCase ^ew/WordPair %) favorites))))))))
+                  (sort fav-lc))))))))
 
 (defonce home-page-state (atom {:selected-index 0}))
 (def home-page
