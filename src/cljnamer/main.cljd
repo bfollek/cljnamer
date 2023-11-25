@@ -14,16 +14,15 @@
 
 (defn like-button
   [current favorites]
-  (f/widget
-   :let [icon (if (favorites current) m/Icons.favorite m/Icons.favorite_border)]
-   (m/ElevatedButton.icon
-    .onPressed
+  (let [icon (if (favorites current) m/Icons.favorite m/Icons.favorite_border)]
+    (m/ElevatedButton.icon
+     .onPressed
     ;; Slick swap code from https://github.com/Tensegritics/ClojureDart/blob/main/samples/first_flutter_app_codelabs/src/sample/first_flutter_app_codelabs.cljd#L39C31-L39C31
-    (fn [] (do
-             (swap! app-state update :favorites #((if (% current) disj conj) % current))
-             (debug-print (str "Changed favorites to " (:favorites @app-state)))))
-    .icon (m/Icon icon)
-    .label (m/Text "Like"))))
+     (fn []
+       (swap! app-state update :favorites #((if (% current) disj conj) % current))
+       (debug-print (str "Changed favorites to " (:favorites @app-state))))
+     .icon (m/Icon icon)
+     .label (m/Text "Like"))))
 
 (def next-button
   (m/ElevatedButton
