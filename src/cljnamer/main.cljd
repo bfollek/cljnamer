@@ -79,7 +79,8 @@
    :context ctx
    :let [cnt (count favorites)
          theme (m/Theme.of ctx)
-         color-primary (-> theme .-colorScheme .-primary)]
+         color-primary (-> theme .-colorScheme .-primary)
+         fav-lc (into {} (map (fn [fav] [fav (.-asLowerCase fav)]) favorites))]
    (if (= cnt 0)
      (m/Center
       .child
