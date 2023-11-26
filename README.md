@@ -1,16 +1,9 @@
 # cljd_cljnamer
 
-A new Flutter project.
+I worked through this [Flutter tutorial](https://codelabs.developers.google.com/codelabs/flutter-codelab-first#0), then converted the Dart code to ClojureDart.
 
-## Getting Started
+## Thanks To...
 
-This project is a starting point for a Flutter application.
+* The [ClojureDart project](https://github.com/Tensegritics/ClojureDart), and this [sample](https://github.com/Tensegritics/ClojureDart/tree/main/samples/first_flutter_app_codelabs) in particular.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* Kenny Tilton's [flutter-mx repo](https://github.com/kennytilton/flutter-mx), and this [example](https://github.com/kennytilton/flutter-mx/blob/main/examples/example/eg/x030_codelab_namer.cljd) in particular.
