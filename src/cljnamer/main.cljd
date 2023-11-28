@@ -80,7 +80,7 @@
    :let [cnt (count favorites)
          theme (m/Theme.of ctx)
          color-primary (-> theme .-colorScheme .-primary)
-         fav-lc (into [] (map (fn [fav] (.-asLowerCase ^ew/WordPair fav)) favorites))]
+         fav-lc (map (fn [fav] (.-asLowerCase ^ew/WordPair fav)) favorites)]
    (if (= cnt 0)
      (m/Center
       .child
